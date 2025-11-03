@@ -1,30 +1,20 @@
-#include "PhoneBook.hpp"
-#include <iostream>
+#include<iostream>
+#include<limits>
+#include"contact.hpp"
+#include"phonebook.hpp"
 
-static std::string prompt(const char* msg) {
-    std::string s;
-    do {
-        std::cout << msg;
-        std::getline(std::cin, s);
-    } while (s.empty() && !std::cin.eof());
-    return s;
-}
 
 int main() {
+    std::string input;
     PhoneBook pb;
-    std::string cmd;
-    while (true) {
-        std::cout << "Enter command (ADD, SEARCH, EXIT): ";
-        if (!std::getline(std::cin, cmd)) break;
-        if (cmd == "EXIT") break;
-        else if (cmd == "ADD") {
-            Contact c;
-            c.set(prompt("First name: "), prompt("Last name: "),
-                  prompt("Nickname: "), prompt("Phone number: "),
-                  prompt("Darkest secret: "));
-            pb.add(c);
-        } else if (cmd == "SEARCH") {
-            pb.search();
-        }
+    Contact a;
+
+    pb.next_contact = 1;
+    while (input != "EXIT") {
+        std::cout << "Phonebook: ";
+        if (!std::getline(std::cin, input)) return 0;
+        if (input == "ADD") pb.add(a);
+        else if (input == "SEARCH") pb.search();
     }
+    return 0;
 }
