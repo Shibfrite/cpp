@@ -10,8 +10,7 @@ Fixed::Fixed(const int value) : _value(value << _frac_width)
 {
 }
 
-Fixed::Fixed(float const value)
-    : _value(static_cast<int>(roundf(value * (1 << _frac_width))))
+Fixed::Fixed(float const value) : _value(roundf(value * (1 << _frac_width)))
 {
 }
 
@@ -53,27 +52,27 @@ bool Fixed::operator!=(Fixed const& other) const {
 //arithmetic
 Fixed Fixed::operator+(Fixed const& other) const {
     Fixed res;
-    res.setRawBits(this->getRawBits() + other.getRawBits());
+    res.setRawBits(getRawBits() + other.getRawBits());
     return res;
 }
 
 Fixed Fixed::operator-(Fixed const& other) const {
     Fixed res;
-    res.setRawBits(this->getRawBits() - other.getRawBits());
+    res.setRawBits(getRawBits() - other.getRawBits());
     return res;
 }
 
 Fixed Fixed::operator*(Fixed const& other) const {
-    int64_t prod = static_cast<int64_t>(this->getRawBits()) * other.getRawBits();
+    int64_t prod = static_cast<int64_t>(getRawBits()) * other.getRawBits();
     Fixed res;
     res.setRawBits(static_cast<int>(prod >> _frac_width));
     return res;
 }
 
 Fixed Fixed::operator/(Fixed const& other) const {
-    int64_t dividend = (static_cast<int64_t>(this->getRawBits()) << _frac_width);
+    int64_t dividend = static_cast<int64_t>(getRawBits()) << _frac_width;
     Fixed res;
-    res.setRawBits(static_cast<int>(dividend / other.getRawBits()));
+    res.setRawBits(static_cast<int>(roundf(dividend / static_cast<float>(other.getRawBits()))));
     return res;
 }
 
