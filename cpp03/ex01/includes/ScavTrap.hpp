@@ -5,6 +5,11 @@
 #include <iostream>
 #include "ClapTrap.hpp"
 
+//Defines
+#define SCAVTRAP_HP 100
+#define SCAVTRAP_EP 50
+#define SCAVTRAP_AD 20
+
 //Class
 class ScavTrap: public ClapTrap
 {

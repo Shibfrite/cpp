@@ -2,15 +2,12 @@
 #include "support.hpp"
 
 //constructor
-ClapTrap::ClapTrap(const std::string& name) : _name(name), _health(10), _energy(10) {
+ClapTrap::ClapTrap(const std::string& name) : _name(name), _health(CLAPTRAP_HP), _energy(CLAPTRAP_EP) {
 	print("ClapTrap-" + name + " was created");
 }
 
 //copy constructor
-ClapTrap::ClapTrap(const ClapTrap& other) {
-	_name = other._name;
-	_health = other._health;
-	_energy = other._energy;
+ClapTrap::ClapTrap(const ClapTrap& other) : _name(other._name), _health(other._health),	_energy(other._energy) {
 }
 
 //operator
@@ -26,13 +23,18 @@ ClapTrap& ClapTrap::operator=(const ClapTrap& other) {
 
 //destructor
 ClapTrap::~ClapTrap() {
-	print("ClapTrap-" + _name + "just died.");
+	print("ClapTrap-" + _name + " just died.");
 }
 
 void ClapTrap::attack(const std::string& target) {
 	if (!_energy)
 	{
 		print("ClapTrap-" + _name + " has no energy left");
+		return ;
+	}
+	if (!_health)
+	{
+		print("ClapTrap-" + _name + "is already disassembled");
 		return ;
 	}
 	_energy--;
@@ -42,10 +44,10 @@ void ClapTrap::attack(const std::string& target) {
 void ClapTrap::takeDamage(unsigned int amount) {
 	if (!_health)
 	{
-		print("ClapTrap-" + _name + "is already disassembled");
+		print("ClapTrap-" + _name + " is already disassembled");
 		return ;
 	}
-	print("ClapTrap-" + _name + " looses " + to_str(amount) + " points of health!");
+	print("ClapTrap-" + _name + " loses " + to_str(amount) + " points of health!");
 	_health = (amount > static_cast<unsigned int>(_health))? 0 : _health - amount;
 	if (!_health)
 		print("ClapTrap-" + _name + " just got disassembled");
@@ -59,7 +61,7 @@ void ClapTrap::beRepaired(unsigned int amount) {
 	}
 	_energy--;
 	if (!_health)
-		print("ClapTrap-" + _name + " just resurected!");
+		print("ClapTrap-" + _name + " just resurrected!");
 	_health += amount;
 	print("ClapTrap-" + _name + " gets repaired by " + to_str(amount) + " points of health!");
 }

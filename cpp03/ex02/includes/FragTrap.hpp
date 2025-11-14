@@ -4,6 +4,11 @@
 //Header
 #include "ClapTrap.hpp"
 
+//Defines
+#define FRAGTRAP_HP 100
+#define FRAGTRAP_EP 100
+#define FRAGTRAP_AD 30
+
 //Class
 class FragTrap: public ClapTrap
 {

@@ -3,20 +3,20 @@
 
 //constructor
 DiamondTrap::DiamondTrap(const std::string& name) : ClapTrap(name + "_clap_name"), ScavTrap(name + "_clap_name"), FragTrap(name + "_clap_name") {
-	print("DiamondTrap-" + name + " was created from default");
 	_name = name;
-	_health = 100;
-	_energy = 100;
-	_attack_damage = 30;
+	_health = FragTrap::_health;
+	_energy = ScavTrap::_energy;
+	_attack_damage = FragTrap::_attack_damage;
+	print("DiamondTrap-" + name + " was created from default");
 }
 
 //copy constructor
 DiamondTrap::DiamondTrap(const DiamondTrap& other) : ClapTrap(other), ScavTrap(other), FragTrap(other) {
-	print("DiamondTrap-" + _name + " was created from copy");
 	_name = other._name;
 	_health = other._health;
 	_energy = other._energy;
 	_attack_damage = other._attack_damage;
+	print("DiamondTrap-" + _name + " was created from copy");
 }
 
 //operator
@@ -37,5 +37,7 @@ DiamondTrap::~DiamondTrap() {
 }
 
 void	DiamondTrap::whoAmI(void) {
-	print("DiamondTrap-" + _name + " is requesting a high five");
+	print("Heyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy!!");
+	print("I am DiamondTrap-" + _name);
+	print("also known as; ClapTrap_" + ClapTrap::_name);
 }

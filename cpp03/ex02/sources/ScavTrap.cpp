@@ -3,20 +3,20 @@
 
 //constructor
 ScavTrap::ScavTrap(const std::string& name) : ClapTrap(name) {
-	print("ScavTrap-" + name + " was created from default");
 	_name = name;
-	_health = 100;
-	_energy = 50;
-	_attack_damage = 20;
+	_health = SCAVTRAP_HP;
+	_energy = SCAVTRAP_EP;
+	_attack_damage = SCAVTRAP_AD;
+	print("ScavTrap-" + name + " was created from default constructor");
 }
 
 //copy constructor
 ScavTrap::ScavTrap(const ScavTrap& other) : ClapTrap(other) {
-	print("ScavTrap-" + _name + " was created from copy");
 	_name = other._name;
 	_health = other._health;
 	_energy = other._energy;
 	_attack_damage = other._attack_damage;
+	print("ScavTrap-" + _name + " was created from copy");
 }
 
 //operator
@@ -33,7 +33,7 @@ ScavTrap& ScavTrap::operator=(const ScavTrap& other) {
 
 //destructor
 ScavTrap::~ScavTrap() {
-	print("ScavTrap-" + _name + "just died.");
+	print("ScavTrap-" + _name + " just died.");
 }
 
 void ScavTrap::attack(const std::string& target) {

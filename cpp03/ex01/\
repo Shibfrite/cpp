@@ -13,11 +13,11 @@
 //Class
 class ClapTrap
 {
-	private:
-		static const unsigned int	_attack_damage = CLAPTRAP_AD;
-		std::string			_name;
-		unsigned int		_health;
-		unsigned int		_energy;
+	protected:
+		unsigned int	_attack_damage;
+		std::string		_name;
+		unsigned int	_health;
+		unsigned int	_energy;
 	public:
 	//constructor
 		ClapTrap(const std::string& name);
