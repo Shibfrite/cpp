@@ -7,7 +7,7 @@ int main(void)
 	randomChump("Le Capitalisme");
 	delete z;
 	Zombie *horde;
-	horde = zombieHorde(8, "les arabes");
+	horde = zombieHorde(8, "tonne de C02");
 	for (int i=0;i<8;i++)
 		horde[i].announce();
 	delete[] horde;

@@ -10,11 +10,11 @@ std::string replaceAll(std::string line, std::string s1, std::string s2)
 	std::string result;
 	size_t pos = 0;
 	size_t found;
-	while ((found = line.find(s1, pos) != std::string::npos))
+	while ((found = line.find(s1, pos)) != std::string::npos)
 	{
 		result.append(line.substr(pos, found - pos));
 		result.append(s2);
-		pos = found + s2.length();
+		pos = found + s1.length();
 	}
 	result.append(line.substr(pos));
 	return (result);

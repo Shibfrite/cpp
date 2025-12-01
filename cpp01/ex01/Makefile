@@ -8,7 +8,7 @@ INC_DIR 	:= includes
 SRC_DIR 	:= sources
 OBJ_DIR		:= objects
 
-SRC_FILES   := main.cpp Zombie.cpp newZombie.cpp randomChump.cpp
+SRC_FILES   := main.cpp Zombie.cpp newZombie.cpp randomChump.cpp zombieHorde.cpp
 SRC_PREFIX  := $(SRC_DIR)/
 SRCS        := $(addprefix $(SRC_PREFIX),$(SRC_FILES))
 OBJS		:= $(SRCS:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
